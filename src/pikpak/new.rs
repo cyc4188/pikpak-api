@@ -124,6 +124,10 @@ impl Client {
 
         let body = json!({
             "kind":      "drive#file",
+            "params": {
+                "from":	"manual",
+                "with_thumbnail":"true",
+            },
             "parent_id": parent.get_id(),
             "upload_type": "UPLOAD_TYPE_URL",
             "url": {

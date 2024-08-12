@@ -17,6 +17,8 @@ pub struct LoginResp {
 
 impl Client {
     pub async fn login(&mut self) -> Result<()> {
+        self.auth_captcha_token("POST:/v1/auth/signin".into())
+            .await?;
         let mut req = self
             .client
             .post("https://user.mypikpak.com/v1/auth/signin?client_id=".to_string() + CLIENT_ID)
@@ -34,14 +36,8 @@ impl Client {
 
         debug!("req: {:?}", req);
 
-        match req
-            .retry_send(self.retry_times)
-            .await
-            .context("[login]")?
-            .json::<Resp<LoginResp>>()
-            .await
-            .context("[login]")?
-        {
+        let resp = req.retry_send(self.retry_times).await.context("[login1]")?;
+        match resp.json::<Resp<LoginResp>>().await.context("[login2]")? {
             Resp::Success(resp) => {
                 debug!("resp: {:?}", resp);
                 self.jwt_token = resp.access_token;
@@ -75,7 +71,7 @@ mod tests {
         }
 
         if let Ok(mut client) = Client::new(get_client_options()) {
-            client.login().await.ok();
+            assert!(client.login().await.is_ok());
         }
 
         Ok(())

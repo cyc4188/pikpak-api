@@ -49,6 +49,7 @@ impl Client {
                 "package_name": PACKAGE_NAME,
                 "client_version": CLIENT_VERSION,
                 "timestamp": ts,
+                "email": self.account,
             }
         });
         let req = self

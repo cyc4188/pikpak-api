@@ -1,8 +1,8 @@
 [package]
-name = "pikpakcli"
+name = "pikpak-api"
 version = "0.1.0"
 edition = "2021"
-description = "A CLI tool for PikPak"
+description = "PikPak API"
 authors = ["booiris, <booiris02@gmail.com>"]
 license = "MIT"
 

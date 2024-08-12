@@ -77,7 +77,7 @@ pub struct ErrResp {
     #[serde(rename = "error_code")]
     pub error_code: i64,
     #[serde(rename = "error_url")]
-    pub error_url: String,
+    pub error_url: Option<String>,
     #[serde(rename = "error_description")]
     pub error_description: String,
 }

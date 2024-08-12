@@ -1,4 +1,4 @@
-use pikpakcli::run_cmd;
+use pikpak_api::run_cmd;
 
 fn main() -> Result<(), anyhow::Error> {
     if let Err(err) = run_cmd() {
