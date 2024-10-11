@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 use anyhow::{Context, Result};
 use log::*;
 use reqwest::header::HeaderMap;
@@ -16,7 +14,7 @@ pub struct NewMagnetResp {
     #[serde(rename = "upload_type")]
     pub upload_type: String,
     pub url: Url,
-    pub file: Value,
+//    pub file: Value,
     pub task: Task,
 }
 

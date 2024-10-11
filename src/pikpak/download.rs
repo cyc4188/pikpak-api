@@ -20,7 +20,7 @@ use super::USER_AGENT;
 fn get_download_client() -> &'static Client {
     static CLIENT: OnceLock<Client> = OnceLock::new();
     CLIENT.get_or_init(|| {
-        let mut client_builder = Client::builder().user_agent(USER_AGENT);
+        let client_builder = Client::builder().user_agent(USER_AGENT);
         // if let Some(proxy) = &get_config().proxy {
         //     client_builder =
         //         client_builder.proxy(reqwest::Proxy::all(proxy).expect(
